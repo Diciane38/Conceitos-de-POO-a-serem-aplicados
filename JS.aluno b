@@ -1,0 +1,58 @@
+abstract class veiculos{
+    private status : booleam = false; // ligado ou desligado
+    constructor (public modelo : string, public ano : number) {}
+    
+// Encapsulamento
+     ligar  () {
+        this. status = true;
+        console.log (` ${ this.modelo} está ligado. `);
+    }
+
+     desligar () {
+        this. status = false;
+        console.log (` $ {this.modelo} está desligado. `);
+     }
+
+     // Método asstrato obrigatório nas classes filhas
+     abstract obterDescrição () : string;
+
+     // Método genérico
+     acelerar () {
+        console.log (` $ {this.modelo} está´acelerando ... `);
+     }
+}
+
+// Classe carro herda de veiculos
+class carro extends veiculo {
+    constructor (modelo : string, ano : number , public numeroPortas : number) {
+        super (modelo , ano);
+    }
+    // Sobrescrevendo Método abstrato
+    obterDescrição () : string {
+        return ` carro : $ {this.modelo}, Ano : $ {this.ano}, portas : $ {this . numeroPortas} ` ;
+    }
+}
+// Classe Caminhão  herda veiculo
+class Caminhao extends veiculo {
+    constructor (modelo : string , ano : number , public capacidadedeCarga : number) {
+        super (modelo , ano);
+    }
+
+    // Sobrescrevendo método abstrato
+    obterDescrição () : string {
+        return ` Caminhão : $ {this . modelo} , Ano : $ {this . ano}, Capacidade de carga : ${this . capacidadedeCarga} kg ` ;
+    }
+}
+// Testando as classes
+const meuCarro = new  Carro (" Fiat Uno " , 2020 , 4);
+meuCarro . ligar ();
+console.log (meuCarro . obterDescrição ());
+meuCarro . acelerar () ;
+meuCarro . desligar () ;
+
+const meuCaminhao = new Caminhao ("volvo FH , 2022 , 20000);
+meuCaminhao . ligar () ;
+console . log (meuCaminhao . obterDescrição ());
+meuCaminhao . acelerar () ;
+meuCaminhao . desligar ();
+ 
